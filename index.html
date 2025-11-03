@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mess Easy</title>
+   <!-- Firebase SDK (must be added before your own script) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+  <!-- Your Firebase config should come next -->
+  <script>
+   const firebaseConfig = {
+  apiKey: "AIzaSyDetPboJsxSkIST7FeaWxqxziFNotkLUw4",
+  authDomain: "mess-easy-21a93.firebaseapp.com",
+  projectId: "mess-easy-21a93",
+  storageBucket: "mess-easy-21a93.firebasestorage.app",
+  messagingSenderId: "938198307480",
+  appId: "1:938198307480:web:d46ed3a1917d94b14476ed"
+};
+    
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <h1>Mess Easy – Select Your Day</h1>
+
+  <div class="days">
+    <button class="day-btn" data-day="Monday">Monday</button>
+    <button class="day-btn" data-day="Tuesday">Tuesday</button>
+    <button class="day-btn" data-day="Wednesday">Wednesday</button>
+    <button class="day-btn" data-day="Thursday">Thursday</button>
+    <button class="day-btn" data-day="Friday">Friday</button>
+    <button class="day-btn" data-day="Saturday">Saturday</button>
+    <button class="day-btn" data-day="Sunday">Sunday</button>
+  </div>
+
+  <div id="form-container" class="hidden">
+    <h2 id="form-day"></h2>
+    <form id="roomForm">
+      <label for="roomNo">Enter Room Number:</label>
+      <input type="text" id="roomNo" name="roomNo" required />
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+    <button id="resetAll" style="background-color: red; color: white;">🔒 Reset All Submissions</button>
+  </div>
+   
+  <div id="rooms-container" class="hidden">
+  <div id="submitted-rooms" style="flex: 1;">
+    <h3>✅ Submitted Rooms for <span id="submitted-day-label"></span>:</h3>
+    <ul id="submitted-room-list"></ul>
+  </div>
+
+  <div id="not-submitted-rooms" style="flex: 1;">
+    <h3>❌ Not Submitted Rooms</h3>
+    <ul id="not-submitted-room-list"></ul>
+  </div>
+</div>
+
+
+   <div id="porottaCountContainer" class="hidden">
+    <label for="porottaCount">Porotta/Appam Count:</label>
+    <input type="number" id="porottaCount" min="0" placeholder="e.g. 12" />
+  </div>
+<div id="roomBoxContainer" class="hidden"></div>
+
+<div id="action-buttons" class="hidden">
+    <button id="submitPrefs">Submit Preferences</button>
+    <button id="downloadCSV">Download Data</button>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
